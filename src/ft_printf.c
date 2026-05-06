@@ -6,7 +6,7 @@
 /*   By: ilopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 10:11:42 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/05/06 14:45:01 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/05/06 17:12:25 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ static int	ft_printv(char const *str, va_list args)
 	else if (*str == '%' && *(str + 1) == 'c')
 		return (ft_putchar(va_arg(args, int)));
 	else if (*str == '%' && *(str + 1) == 'i')
-		return (ft_putnbr(va_arg(args, int)));
+		return (ft_putnbr_base(va_arg(args, int), "0123456789"));
 	else if (*str == '%' && *(str + 1) == 'd')
-		return (ft_putnbr(va_arg(args, int)));
+		return (ft_putnbr_base(va_arg(args, int), "0123456789"));
 	else if (*str == '%' && *(str + 1) == 'u')
-		return (ft_putnbr(va_arg(args, unsigned int)));
+		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789"));
 	else if (*str == '%' && *(str + 1) == 'x')
-		return  (ft_puthex(va_arg(args, unsigned int)));
+		return  (ft_putnbr_base(va_arg(args, unsigned int), "0123456789abcdef"));
 	else if (*str == '%' && *(str + 1) == 'X')
-		return (ft_puthex(va_arg(args, unsigned int)));
+		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789ABCDEF"));
 	else if (*str == '%' && *(str + 1) == 'p')
-		return (ft_putpt(va_arg(args, void *)));
+		return (ft_putptr(va_arg(args, void *)));
 	return (0);
 }
 

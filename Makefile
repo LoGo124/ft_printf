@@ -6,7 +6,7 @@
 #    By: ilopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/03 10:11:26 by ilopez-g          #+#    #+#              #
-#    Updated: 2026/05/06 14:45:07 by ilopez-g         ###   ########.fr        #
+#    Updated: 2026/05/06 17:05:14 by ilopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC			= $(wildcard src/*.c)
 RM 		= rm -rf
 MP		= mkdir -p
 
-CFLAGS 	= -Werror -Wall -Wextra -W -O3 -Ofast 
+CFLAGS 	= -Werror -Wall -Wextra# -W -O3 -Ofast 
 
 LIBC 	= ar -rcs
 
@@ -34,7 +34,7 @@ DEP	= $(addsuffix .d, $(basename $(OBJ)))
 
 $(OBJ_DIR)%.o: %.c $(MKFL)
 	@$(MP) $(dir $@)
-	${CC} ${CFLAGS} -MMD -I ./ -c $< -o $@
+	@${CC} ${CFLAGS} -MMD -I ./ -c $< -o $@
 
 all:
 	@$(MAKE) -C $(LIB_DIR) 
@@ -46,8 +46,8 @@ $(NAME): $(OBJ)
 	$(LIBC) $(NAME) $(OBJ) $(LIB)
 
 testmain: all
-	cc main.c libftprintf.a
-	./a.out "Hola mundo!"
+	@cc main.c libftprintf.a
+	@./a.out "Hola mundo!"
 
 clean:
 	$(RM) $(OBJ) $(OBJ_DIR)
