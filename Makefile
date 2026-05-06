@@ -6,19 +6,7 @@
 #    By: ilopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/03 10:11:26 by ilopez-g          #+#    #+#              #
-#    Updated: 2026/05/03 11:09:41 by ilopez-g         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: nlopez-g <nlopez-g@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/07/19 19:33:15 by nlopez-g          #+#    #+#              #
-#    Updated: 2023/08/12 00:11:57 by nlopez-g         ###   ########.fr        #
+#    Updated: 2026/05/06 14:45:07 by ilopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +15,7 @@ MKFL	= Makefile
 NAME 	= libftprintf.a
 
 OBJ_DIR	= obj/
-LIB_DIR = lib/Libft/
+LIB_DIR = lib/libft/
 LIB		= $(LIB_DIR)libft.a
 
 SRC			= $(wildcard src/*.c)
@@ -54,10 +42,12 @@ all:
 
 -include ${DEP}
 $(NAME): $(OBJ)
+	cp -r $(LIB) $(NAME)
 	$(LIBC) $(NAME) $(OBJ) $(LIB)
 
-testmain:
-	gcc main.c libftprintf.a
+testmain: all
+	cc main.c libftprintf.a
+	./a.out "Hola mundo!"
 
 clean:
 	$(RM) $(OBJ) $(OBJ_DIR)
