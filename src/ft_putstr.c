@@ -6,7 +6,7 @@
 /*   By: ilopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 13:58:55 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/05/06 14:39:35 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/05/11 13:09:22 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	ft_putstr(char *str)
 {
+	if (!str)
+		str = "(null)";
 	ft_putstr_fd(str, 1);
 	return ((int)ft_strlen(str));
 }
